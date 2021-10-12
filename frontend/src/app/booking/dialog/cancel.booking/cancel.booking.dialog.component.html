@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Cancel your booking</h1>
+<div mat-dialog-content>
+  <span>Please review the details before canceling the booking id
+    <b>{{ dialogParameters.bookingId }}</b> for the room <b>{{ dialogParameters.roomId }}</b></span>
+
+  <h4>The following time slots will be canceled.</h4>
+
+  <form [formGroup]="dialogFormGroup">
+    <mat-form-field style="width: 100%; height: 190px" appearance="fill">
+      <mat-label>Slots</mat-label>
+      <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let slot of dialogParameters.cancelableSlots">
+          {{ slot.militaryTime }}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="basic" (click)="onAbandon()">Abandon</button>
+  <button mat-stroked-button color="primary" cdkFocusInitial
+          (click)="onCancelBooking($event)">Cancel Booking</button>
+</div>
+
+

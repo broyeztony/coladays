@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <span>COLA DAYS Booking Grid</span>
+  <span style="width: 100%"></span>
+  <ng-container *ngIf="auth.isAuthenticated$ | async">
+    <mat-label style="margin-right: 20px;">{{ userProfile?.nickname }}</mat-label>
+    <button mat-raised-button color="primary" (click)="auth.logout({ returnTo: document.location.origin })"
+            class="mat-raised-button">logout</button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-grid-list cols="20" rowHeight="40px" gutterSize="0">
+  <mat-grid-tile class="header" *ngFor="let meetingRoom of meetingRooms" style="background: whitesmoke">
+    <b>{{ meetingRoom }}</b>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="20" rowHeight="40px" gutterSize="1">
+  <mat-grid-tile *ngFor="let slot of slots"
+                 [style.backgroundColor]="slot.slotColor"
+                 [style.border]="slot.slotBorder"
+                 [style.z-index]="(slot.bookingStatus == 2) ? 1 : 2"
+                 [style.position]="relative"
+                 (click)="onSlotClick(slot)"
+    >
+      {{ slot.militaryTime }}
+  </mat-grid-tile>
+</mat-grid-list>

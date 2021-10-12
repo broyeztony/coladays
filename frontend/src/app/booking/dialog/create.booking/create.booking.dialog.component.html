@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>New Booking</h1>
+<div mat-dialog-content>
+  <p>Please select the booking period for the room {{ dialogParameters.roomId }}</p>
+  <form [formGroup]="dialogFormGroup">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start Time</mat-label>
+      <input matInput value="{{ dialogParameters.militaryTimeStart }}">
+    </mat-form-field>
+
+    <div style="margin-right: 5px"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>End Time</mat-label>
+      <mat-select required (valueChange)="onSelectionChange($event)" [disabled]="invalidState">
+        <mat-option *ngFor="let t of timeData" [value]="t.time">
+          {{ t.militaryTime }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="basic" (click)="onCancel()">Cancel</button>
+  <button mat-stroked-button color="primary" cdkFocusInitial [disabled]="invalidState"
+          (click)="onCreateBooking($event)">Book</button>
+</div>
+
+
