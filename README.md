@@ -23,6 +23,11 @@ Stop and remove containers
 sh stop-coladays.sh
 ```
 
+Run the frontend tests
+```
+cd frontend && ng test
+```
+
 How to interact with the system
 
 Once the application is running, navigate to http://localhost:4200
