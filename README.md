@@ -4,9 +4,9 @@ The Coladays booking system is composed of:
 - a MySQL database
 - a backend app built on top of https://nodejs.org/en/ and https://socketcluster.io/
 - a frontend app built on top of https://angular.io/ and https://material.angular.io/ 
-- a 3rd IdentiftyProvider https://auth0.com/
+- a 3rd part IdP https://auth0.com/
 
-The system can entirely be run within Docker.
+The system runs entirely within Docker.
 
 Before building the Docker images, please make sure the ports 4200 (Frontend), 8000 (Server) and 3306 (MySQL) are free.
 ```
